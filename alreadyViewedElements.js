@@ -53,9 +53,15 @@ var alreadyViewedElements = {
   remove: function() {
     this.updateItems();
 
+    var getLastIdx = function() {
+      return Object.keys(alreadyViewedElements.items).map(function (key) { return alreadyViewedElements.items[key]; }).lastIndexOf(alreadyViewedElements.items.getLastSeen());
+    };
+
     var items = alreadyViewedElements.items;
-    var toIdx = Object.keys(alreadyViewedElements.items).map(function (key) { return alreadyViewedElements.items[key]; }).lastIndexOf(alreadyViewedElements.items.getLastSeen());
+    var toIdx = getLastIdx;
+
     items.removeTo(toIdx);
+    alreadyViewedElements.items = alreadyViewedElements.items.splice(toIdx);
   },
 
   addButton: function() {
@@ -75,6 +81,8 @@ var alreadyViewedElements = {
   },
 
   items: [],
+
+  lastSeen: null,
 };
 
 if ( jQuery.isReady ) {
