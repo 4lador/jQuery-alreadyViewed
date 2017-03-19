@@ -62,7 +62,7 @@ var alreadyViewedElements = {
     };
 
     this.updateItems();
-    
+
     var items = alreadyViewedElements.items;
     var toIdx = getLastIdx();
 
@@ -82,7 +82,7 @@ var alreadyViewedElements = {
     $button.css('top', alreadyViewedElements.config.button.top);
     $button.css('left', alreadyViewedElements.config.button.left);
     $button.click(function() {
-      alreadyViewedElements.config.button.onClick.call();
+      alreadyViewedElements.config.button.onClick.call(this);
     });
 
     $container.append($button);
