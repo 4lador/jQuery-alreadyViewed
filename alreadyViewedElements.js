@@ -1,4 +1,5 @@
 var alreadyViewedElements = {
+  // All the initialization stuff
   init: function( settings ) {
     alreadyViewedElements.config = {
       selector: 'div.category.row',
@@ -8,7 +9,8 @@ var alreadyViewedElements = {
         container: 'body',
         position: 'fixed',
         top: '50%',
-        left: '30px'
+        left: '30px',
+        onClick: this.remove,
       }
     };
 
@@ -42,28 +44,34 @@ var alreadyViewedElements = {
     alreadyViewedElements.setup();
   },
 
+  // Set-up things
   setup: function() {
     this.addButton();
+    this.updateItems();
   },
 
+  // Update targets elements array
   updateItems: function() {
     alreadyViewedElements.items = jQuery(alreadyViewedElements.config.selector);
   },
 
+  // Remove last seens elements from the DOM
   remove: function() {
-    this.updateItems();
-
-    var getLastIdx = function() {
+    function getLastIdx () {
       return Object.keys(alreadyViewedElements.items).map(function (key) { return alreadyViewedElements.items[key]; }).lastIndexOf(alreadyViewedElements.items.getLastSeen());
     };
 
+    this.updateItems();
+    
     var items = alreadyViewedElements.items;
-    var toIdx = getLastIdx;
+    var toIdx = getLastIdx();
 
     items.removeTo(toIdx);
     alreadyViewedElements.items = alreadyViewedElements.items.splice(toIdx);
   },
 
+  // Adds a button to do anything with last seens elements (default to remove)
+  // The method could be changed in the config object in the 'init' function
   addButton: function() {
     var $button = jQuery(alreadyViewedElements.config.button.html);
     var $container = jQuery(alreadyViewedElements.config.button.container);
@@ -74,8 +82,8 @@ var alreadyViewedElements = {
     $button.css('top', alreadyViewedElements.config.button.top);
     $button.css('left', alreadyViewedElements.config.button.left);
     $button.click(function() {
-      that.remove();
-    })
+      alreadyViewedElements.config.button.onClick.call();
+    });
 
     $container.append($button);
   },
