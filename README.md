@@ -12,7 +12,7 @@ You can configure the selector of the elements to listen for in the 'init' funct
 You can create a bookmarklet to add a "flush list" button on your webpage.
 
 ```
-javascript:(function(){var commit="104a4ce5b21886bb24ee7eeaa225fb347417be0f"; s=document.createElement('script');s.type='text/javascript';s.src='https://cdn.rawgit.com/4lador/jQuery-alreadyViewed/' + commit + '/alreadyViewedElements.js?v='+parseInt(Math.random()*99999999);document.body.appendChild(s);})();
+javascript:(function(){var commit="0f8a7019b1376a8d5e0be90a1da6104dd1fd1bfc"; s=document.createElement('script');s.type='text/javascript';s.src='https://cdn.rawgit.com/4lador/jQuery-alreadyViewed/' + commit + '/alreadyViewedElements.js?v='+parseInt(Math.random()*99999999);document.body.appendChild(s);})();
 ```
 
 ### Test
