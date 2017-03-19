@@ -82,7 +82,7 @@ var alreadyViewedElements = {
     $button.css('top', alreadyViewedElements.config.button.top);
     $button.css('left', alreadyViewedElements.config.button.left);
     $button.click(function() {
-      alreadyViewedElements.config.button.onClick.call(this);
+      alreadyViewedElements.config.button.onClick.call(that);
     });
 
     $container.append($button);
