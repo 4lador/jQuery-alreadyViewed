@@ -21,12 +21,10 @@ var alreadyViewedElements = {
     		var top = rect.top;
     		lastseen = idx-1;
 
-    		if ( top > 0 ) {
-    			return true;
-    		}
+        return (top < 0);
     	});
 
-    	return this[lastseen];
+      return that[lastseen];
     };
 
     jQuery.fn.removeTo = function (idx) {
