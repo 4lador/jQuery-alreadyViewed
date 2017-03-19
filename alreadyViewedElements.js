@@ -15,28 +15,28 @@ var alreadyViewedElements = {
     };
 
     jQuery.fn.getLastSeen = function () {
-    	var lastseen = 0;
+      var lastseen = 0;
       var that = this;
 
-    	that.each(function(idx, val) {
-    		var rect = this.getBoundingClientRect();
-    		var top = rect.top;
-    		lastseen = idx-1;
+      that.each(function(idx, val) {
+      	var rect = this.getBoundingClientRect();
+      	var top = rect.top;
+      	lastseen = idx-1;
 
         if (top > 0) {
           return false;
         }
-    	});
+      });
 
       return this[lastseen];
     };
 
     jQuery.fn.removeTo = function (idx) {
-    	for (var i = 0; i < idx; i++) {
-    		jQuery(this[i]).remove();
-    	}
+      for (var i = 0; i < idx; i++) {
+        jQuery(this[i]).remove();
+      }
 
-    	return this;
+      return this;
     };
 
     jQuery.extend( alreadyViewedElements.config , settings );
